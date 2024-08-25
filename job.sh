@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo ""
+echo "JOB.SH"
 echo "===================================="
 echo "Script executed by:"
 echo "George Awad"
