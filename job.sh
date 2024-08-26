@@ -2,11 +2,7 @@
 
 echo "JOB.SH"
 echo "===================================="
-echo "Script executed by:"
-echo "George Awad"
-echo "Digital Creativity Co"
-echo "https://el-abda3.com"
-echo "Mobile Applications Leaders [Let's work together]"
+echo "Script will create a test job to test your queue"
 echo "===================================="
 
 sleep 5
