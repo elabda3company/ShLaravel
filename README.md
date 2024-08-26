@@ -70,6 +70,3 @@ Digital Creativity Co
 
 Licensed under the MIT License. See the LICENSE file for more details.
 
----
-
-This format should improve clarity and usability, with emoji usage to make the sections easily distinguishable.
