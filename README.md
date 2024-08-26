@@ -1,7 +1,3 @@
-Here's a refined and visually appealing format for your README file, incorporating Markdown for readability and structure:
-
----
-
 # 🚀 Laravel Deployment Check Script
 
 This shell script automates the setup and checks necessary after deploying a Laravel application. It ensures all critical components, such as directories, permissions, and services, are correctly configured for smooth operation. 🛠️
