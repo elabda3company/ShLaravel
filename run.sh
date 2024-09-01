@@ -45,24 +45,8 @@ print_header() {
     echo "======================================="
 }
 
-# Function to print header
-print_header() {
-    echo "======================================="
-    echo "$1"
-    echo "======================================="
-}
-
-# Fix for "InvalidArgumentException: Please provide a valid cache path."
-print_header "Checking bootstrap/cache folder"
-
-# Check bootstrap/cache folder
-if [ -d "bootstrap/cache" ]; then
-    echo "bootstrap/cache folder exists."
-else
-    echo "bootstrap/cache folder does not exist. Creating it now..."
-    mkdir -p bootstrap/cache
-    echo "bootstrap/cache folder created."
-fi
+# Get the current user
+CURRENT_USER=$(whoami)
 
 # Check if the storage folder and its subfolders exist, create if not
 print_header "Checking storage folder and subfolders"
@@ -89,11 +73,22 @@ for subfolder in "${subfolders[@]}"; do
     fi
 done
 
+# Fix for "InvalidArgumentException: Please provide a valid cache path."
+print_header "Checking bootstrap/cache folder"
 
+# Check bootstrap/cache folder
+if [ -d "bootstrap/cache" ]; then
+    echo "bootstrap/cache folder exists."
+else
+    echo "bootstrap/cache folder does not exist. Creating it now..."
+    mkdir -p bootstrap/cache
+    echo "bootstrap/cache folder created."
+fi
 
-# Set appropriate permissions (optional but recommended)
+# Set appropriate permissions using the current user
+print_header "Setting permissions for storage and cache directories"
 chmod -R 775 storage bootstrap/cache
-chown -R www-data:www-data storage bootstrap/cache
+chown -R "$CURRENT_USER":"$CURRENT_USER" storage bootstrap/cache
 
 echo "Cache path setup completed successfully."
 
