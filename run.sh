@@ -38,25 +38,35 @@ APP_KEY_STATUS="Regenerated"
 QUEUE_STATUS="Checked (via test job)"
 DB_CONNECTION_STATUS="Unknown"
 
-# Check if the storage folder and its subfolders exist
+# Function to print header
+print_header() {
+    echo "======================================="
+    echo "$1"
+    echo "======================================="
+}
+
+# Check if the storage folder and its subfolders exist, create if not
 print_header "Checking storage folder and subfolders"
 
+# Check storage folder
 if [ -d "storage" ]; then
     echo "Storage folder exists."
 else
-    STORAGE_STATUS="Missing"
-    echo "Storage folder does not exist. Please create it."
+    echo "Storage folder does not exist. Creating it now..."
+    mkdir -p storage
+    echo "Storage folder created."
 fi
 
-# Check for subfolders
+# Check for subfolders and create if not exist
 subfolders=("app" "framework" "logs")
 
 for subfolder in "${subfolders[@]}"; do
     if [ -d "storage/$subfolder" ]; then
         echo "Subfolder storage/$subfolder exists."
     else
-        STORAGE_STATUS="Missing subfolder"
-        echo "Subfolder storage/$subfolder does not exist. Please create it."
+        echo "Subfolder storage/$subfolder does not exist. Creating it now..."
+        mkdir -p "storage/$subfolder"
+        echo "Subfolder storage/$subfolder created."
     fi
 done
 
