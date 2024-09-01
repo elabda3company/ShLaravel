@@ -52,6 +52,18 @@ print_header() {
     echo "======================================="
 }
 
+# Fix for "InvalidArgumentException: Please provide a valid cache path."
+print_header "Checking bootstrap/cache folder"
+
+# Check bootstrap/cache folder
+if [ -d "bootstrap/cache" ]; then
+    echo "bootstrap/cache folder exists."
+else
+    echo "bootstrap/cache folder does not exist. Creating it now..."
+    mkdir -p bootstrap/cache
+    echo "bootstrap/cache folder created."
+fi
+
 # Check if the storage folder and its subfolders exist, create if not
 print_header "Checking storage folder and subfolders"
 
@@ -77,17 +89,7 @@ for subfolder in "${subfolders[@]}"; do
     fi
 done
 
-# Fix for "InvalidArgumentException: Please provide a valid cache path."
-print_header "Checking bootstrap/cache folder"
 
-# Check bootstrap/cache folder
-if [ -d "bootstrap/cache" ]; then
-    echo "bootstrap/cache folder exists."
-else
-    echo "bootstrap/cache folder does not exist. Creating it now..."
-    mkdir -p bootstrap/cache
-    echo "bootstrap/cache folder created."
-fi
 
 # Set appropriate permissions (optional but recommended)
 chmod -R 775 storage bootstrap/cache
