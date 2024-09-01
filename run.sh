@@ -174,21 +174,6 @@ for var in "${REQUIRED_ENV_VARS[@]}"; do
 done
 
 # Check if storage symlink exists (for Laravel apps that use 'php artisan storage:link')
-print_header "Checking storage symlink"
-
-if [ -L "public/storage" ]; then
-    echo "Storage symlink exists."
-else
-    SYMLINK_STATUS="Missing"
-    echo "Storage symlink does not exist. Creating symlink..."
-    php artisan storage:link
-    if [ $? -eq 0 ]; then
-        echo "Storage symlink created successfully."
-    else
-        SYMLINK_STATUS="Failed"
-        echo "Failed to create storage symlink."
-    fi
-fi
 
 # Check if the public/.htaccess file exists
 print_header "Checking .htaccess file"
