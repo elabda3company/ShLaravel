@@ -73,6 +73,12 @@ for subfolder in "${subfolders[@]}"; do
     fi
 done
 
+# Create additional subdirectories within the framework folder
+mkdir -p storage/framework/{sessions,views,cache}
+
+# Set permissions for the framework directory
+chmod -R 775 storage/framework
+
 # Fix for "InvalidArgumentException: Please provide a valid cache path."
 print_header "Checking bootstrap/cache folder"
 
